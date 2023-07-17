@@ -9,8 +9,8 @@ function HighlightSmall({ username, imageURL, onClick }) {
 
   return (
     <div className={highlightClasses} onClick={onClick}>
-      <img src={require('../images/user-icon.svg').default} alt={username} className="profile-image" />
-      <span className="username">{username}</span>
+      <img src="https://picsum.photos/60/60" alt={username} className="profile-image" />
+      <div className="username">{username}</div>
     </div>
   );
 }

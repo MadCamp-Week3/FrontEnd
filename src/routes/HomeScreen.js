@@ -11,10 +11,11 @@ const HomeScreen = () => {
     { id: 3, username: 'user3', imageURL: 'profile3.jpg' },
   ];
 
+  // 고정데이터로
   const posts = [
-    { id: 1, username: 'user1', imageURL: 'post1.jpg', caption: 'Caption 1' },
-    { id: 2, username: 'user2', imageURL: 'post2.jpg', caption: 'Caption 2' },
-    { id: 3, username: 'user3', imageURL: 'post3.jpg', caption: 'Caption 3' },
+    { id: 1, username: 'user1', imageURL: "https://picsum.photos/60/60", caption: 'Caption 1' },
+    { id: 2, username: 'user2', imageURL: "https://picsum.photos/60/60", caption: 'Caption 2' },
+    { id: 3, username: 'user3', imageURL: "https://picsum.photos/60/60", caption: 'Caption 3' },
     // Add more posts
   ];
 

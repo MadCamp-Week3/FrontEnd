@@ -1,12 +1,13 @@
 import React from 'react';
 import '../css/HomeScreen/HighlightCard.css'
+import addIcon from '../images/add-icon.svg';
 
-const HighlightCard = (songIds = [1, 2, 3], userId, content) => {
+const HighlightCard = ( {songIds = [1, 2, 3], userId, userPictureURL, caption} ) => {
 
   //TODO db연결
   const songData = songIds.map((songId, index) => {
     return songId;
-  }); // 스포티파이 노래 id를 통해서 정보 찾기
+  }); // 스포티파이 노래 id를 통해서 정보 찾기 - cover, artist, title
 
   const songs = [
     { id: 1, coverURL: 'https://picsum.photos/60/60', title: 'Song 1', artist: 'Artist 1' },
@@ -15,9 +16,12 @@ const HighlightCard = (songIds = [1, 2, 3], userId, content) => {
   ];
 
   function HighlightItem({ songId, coverURL, title, artist }) {
-    const onClickAdd = () => {
+
+    const onClickAdd = (event) => {
+      event.stopPropagation();
       console.log(`pressed ${title} `)
-      //TODO add the songid to the users playlist
+
+      addToPlaylist(songId); //TODO add the songid to the users playlist
     };
 
     return (
@@ -28,7 +32,7 @@ const HighlightCard = (songIds = [1, 2, 3], userId, content) => {
           <div className="song-artist">{artist}</div>
         </div>
         <div className='song-add' onClick={onClickAdd}>
-          <img className="add-frame" alt="Frame" src={require('../images/add-icon.svg').default}  />
+          <img className="add-frame" alt="Frame" src={addIcon}  />
         </div>
       </div>
     );
@@ -46,8 +50,12 @@ const HighlightCard = (songIds = [1, 2, 3], userId, content) => {
 
   //TODO db 연결
   const profileURL= "https://picsum.photos/60/60";
-  const profileName = "John Doe";
-  const caption = "lorem ipsum";
+  const profileName = "John Doe"; //with userId
+  caption = "lorem ipsum"; //= content
+
+  // const profileURL= userPictureURL;
+  // const profileName = "John Doe"; //with userId
+  // const caption = content;
   
 
   return (
@@ -63,3 +71,7 @@ const HighlightCard = (songIds = [1, 2, 3], userId, content) => {
 }
 
 export default HighlightCard;
+
+function addToPlaylist(songId) {
+  return;
+}

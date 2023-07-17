@@ -32,7 +32,7 @@ const App = () => {
           <Route path="/search" element={<SearchScreen />} />
           <Route path="/start" element={<StartScreen/>} />
           
-          <Route path="/highlight" element={<HighlightScreen />} />
+          <Route path="/highlight/:param" element={<HighlightScreen />} />
 
           <Route path="/stories" element={<StoriesTest />} />
 
