@@ -20,7 +20,6 @@ const SignupScreen = () => {
     console.log(email);
     console.log(password);
     console.log(nickname);
-    console.log(signinData)
     // POST 요청 보내기
     client.post('signup/', signinData)
       .then((response) => {

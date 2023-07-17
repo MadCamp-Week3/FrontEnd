@@ -19,13 +19,11 @@ const LoginScreen = () => {
 
     client.post('login/', loginData) // 서버의 로그인 엔드포인트에 맞게 URL을 변경해주세요
       .then((response) => {
-        // Handle the server response
-        console.log(response.data);
+        console.log(response.data);  // Handle the server response
         navigate('/mypage');
       })
       .catch((error) => {
-        // Handle any error that occurred during the HTTP request
-        console.error(error);
+        console.error(error);  // Handle any error that occurred during the HTTP request
       });
   };
 

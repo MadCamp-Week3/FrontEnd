@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import '../css/HomeScreen/HighlightCard.css'
 import addIcon from '../images/add-icon.svg';
+import { FetchSongsByURI, SearchSongs, addSongToPlaylist } from '../functions/spotify';
+import { TokenContext } from '../App';  // Assume your App component is one level up in the directory
 
-const HighlightCard = ( {songIds = [1, 2, 3], userId, userPictureURL, caption} ) => {
+const HighlightCard = ( {songURIs = [1, 2, 3], userId, userPictureURL, caption} ) => {
+
+  const { token, logout, CLIENT_ID, REDIRECT_URI, RESPONSE_TYPE, AUTH_ENDPOINT } = useContext(TokenContext);
 
   //TODO db연결
-  const songData = songIds.map((songId, index) => {
-    return songId;
-  }); // 스포티파이 노래 id를 통해서 정보 찾기 - cover, artist, title
+  const songData = FetchSongsByURI(token).map((track, index) => ({
+    uri: track.uri,
+    albumCover: track.album.images[0].url,
+    title: track.name,
+    artist: track.artists[0].name,
+  }));
 
   const songs = [
     { id: 1, coverURL: 'https://picsum.photos/60/60', title: 'Song 1', artist: 'Artist 1' },
@@ -15,13 +22,13 @@ const HighlightCard = ( {songIds = [1, 2, 3], userId, userPictureURL, caption} )
     { id: 3, coverURL: 'https://picsum.photos/60/60', title: 'Song 3', artist: 'Artist 3' },
   ];
 
-  function HighlightItem({ songId, coverURL, title, artist }) {
+  function HighlightItem({ songURI, coverURL, title, artist }) {
 
     const onClickAdd = (event) => {
       event.stopPropagation();
       console.log(`pressed ${title} `)
 
-      addToPlaylist(songId); //TODO add the songid to the users playlist
+      addSongToPlaylist(songURI, 1); //TODO add the songid to the users playlist
     };
 
     return (
@@ -71,7 +78,3 @@ const HighlightCard = ( {songIds = [1, 2, 3], userId, userPictureURL, caption} )
 }
 
 export default HighlightCard;
-
-function addToPlaylist(songId) {
-  return;
-}
