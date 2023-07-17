@@ -1,0 +1,296 @@
+/* 나머지 컨텐츠에 영향을 주지 않도록 margin을 설정합니다. */
+.main-content {
+  margin-right: 220px; /* 사이드바 너비 + 여백 크기 */
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 100%;
+    background-color: rgb(22, 22, 22);
+    padding: 20px;
+    display: flex;
+}
+
+.logo-frame-wrapper {
+  border: 0px none;
+  height: 40px;
+  width: 131px;
+}
+
+.sidebar-menu {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  padding: 0px 8px;
+  position: absolute;
+  top: 90px;
+  width: fit-content;
+}
+
+.menu-item-layout {
+  align-items: flex-start;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 16px;
+  padding: 14px 130.09px 14px 16px;
+  position: relative;
+  width: fit-content;
+}
+
+.text-wrapper {
+  color: #ffffff;
+  font-family: "Inter-Bold", Helvetica;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 22.4px;
+  margin-top: 1px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.frame {
+  height: 24px;
+  min-width: 24px;
+  position: relative;
+}
+
+
+
+/*
+.box {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.box .sidebar-wrapper {
+  border: 0px none;
+  height: 603px;
+  position: relative;
+  width: 241px;
+}
+
+.box .sidebar {
+  height: 603px;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 241px;
+}
+
+.box .logo-auto-layout {
+  height: 40px;
+  left: 24px;
+  object-fit: cover;
+  position: absolute;
+  top: 24px;
+  width: 131px;
+}
+
+.box .sidebar-menu {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  padding: 0px 8px;
+  position: absolute;
+  top: 90px;
+  width: fit-content;
+}
+
+.box .home-layout {
+  align-items: flex-start;
+  border-radius: 4px;
+  display: flex;
+  gap: 16px;
+  padding: 8px 130.09px 8px 16px;
+  position: relative;
+  width: fit-content;
+}
+
+.box .frame {
+  height: 24px;
+  min-width: 24px;
+  position: relative;
+}
+
+.box .auto-layout {
+  align-items: flex-start;
+  display: flex;
+  padding: 0px 0.91px 0.39px 0px;
+  position: relative;
+  width: fit-content;
+}
+
+.box .text-wrapper {
+  color: #ffffff;
+  font-family: "Inter-Bold", Helvetica;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 22.4px;
+  margin-top: -1px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.box .search-auto-layout {
+  align-items: flex-start;
+  border-radius: 4px;
+  display: flex;
+  gap: 16px;
+  padding: 8px 123.8px 8px 16px;
+  position: relative;
+  width: fit-content;
+}
+
+.box .search-text-wrapper {
+  align-items: flex-start;
+  display: flex;
+  padding: 0px 0.2px 0.39px 0px;
+  position: relative;
+  width: fit-content;
+}
+
+.box .div {
+  color: #b3b3b3;
+  font-family: "Inter-Bold", Helvetica;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 22.4px;
+  margin-top: -1px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.box .rooms-auto-layout {
+  align-items: flex-start;
+  border-radius: 4px;
+  display: flex;
+  gap: 16px;
+  padding: 8px 90.16px 8px 16px;
+  position: relative;
+  width: fit-content;
+}
+
+.box .div-wrapper {
+  align-items: flex-start;
+  display: flex;
+  padding: 0px 0.84px 0.39px 0px;
+  position: relative;
+  width: fit-content;
+}
+
+.box .auto-layout-vertical {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 334px;
+  width: fit-content;
+}
+
+.box .auto-layout-2 {
+  align-items: flex-start;
+  display: flex;
+  opacity: 0.7;
+  padding: 10px 82.47px 10px 64px;
+  position: relative;
+  width: fit-content;
+}
+
+.box .auto-layout-3 {
+  align-items: flex-start;
+  display: flex;
+  padding: 2px 1.53px 2px 0px;
+  position: relative;
+  width: fit-content;
+}
+
+.box .text-wrapper-2 {
+  color: #ffffff;
+  font-family: "Inter-Bold", Helvetica;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: -1px;
+  position: relative;
+  width: fit-content;
+}
+
+.box .img {
+  height: 24px;
+  left: 24px;
+  object-fit: cover;
+  position: absolute;
+  top: 8px;
+  width: 24px;
+}
+
+.box .auto-layout-4 {
+  align-items: flex-start;
+  display: flex;
+  padding: 7.8px 24px 8.81px 64px;
+  position: relative;
+  width: fit-content;
+}
+
+.box .auto-layout-5 {
+  align-items: flex-start;
+  display: flex;
+  flex: 1;
+  opacity: 0.7;
+  padding: 0px 75px 0.39px 0px;
+  position: relative;
+}
+
+.box .auto-layout-6 {
+  align-items: flex-start;
+  display: flex;
+  flex: 1;
+  opacity: 0.7;
+  padding: 0px 62px 0.39px 0px;
+  position: relative;
+}
+
+.box .auto-layout-7 {
+  align-items: flex-start;
+  display: flex;
+  padding: 8px 24px 0px;
+  position: relative;
+  width: fit-content;
+}
+
+.box .frame-2 {
+  background-color: #282828;
+  height: 1px;
+  min-width: 193px;
+  position: relative;
+}
+
+.box .rectangle {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+  height: 16px;
+  left: 0;
+  position: absolute;
+  top: 9px;
+  width: 241px;
+}
+*/
+  

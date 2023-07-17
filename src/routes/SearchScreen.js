@@ -1,11 +1,11 @@
 import React from 'react';
 
-const HomePage = () => {
+const SearchScreen = () => {
   return (
     <div className='main-content'>
-      <h1>Music</h1>
+      <h1>Search</h1>
     </div>
     );
 };
 
-export default HomePage;
+export default SearchScreen;

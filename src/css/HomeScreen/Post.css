@@ -1,0 +1,28 @@
+/* Post.css */
+
+.post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.post-image {
+  width: 300px;
+  height: 300px;
+  /* Additional styles */
+}
+
+.post-info {
+  margin-top: 10px;
+  /* Additional styles */
+}
+
+.username {
+  font-weight: bold;
+  /* Additional styles */
+}
+
+.caption {
+  font-size: 14px;
+  /* Additional styles */
+}
