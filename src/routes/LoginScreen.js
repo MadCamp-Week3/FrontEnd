@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import client from '../client';
+import client from '../client';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,23 +12,18 @@ const LoginScreen = () => {
     e.preventDefault();
     // Send the form data to the server via HTTP using Axios
 
-    const url = 'http://127.0.0.1:8000/login/';
-
     const loginData = {
       'email': email,
       'password':password,
     }
-    
 
-    axios.post(url, loginData) // 서버의 로그인 엔드포인트에 맞게 URL을 변경해주세요
+    client.post('login/', loginData) // 서버의 로그인 엔드포인트에 맞게 URL을 변경해주세요
       .then((response) => {
-        // Handle the server response
-        console.log(response.data);
+        console.log(response.data);  // Handle the server response
         navigate('/mypage');
       })
       .catch((error) => {
-        // Handle any error that occurred during the HTTP request
-        console.error(error);
+        console.error(error);  // Handle any error that occurred during the HTTP request
       });
   };
 

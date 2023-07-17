@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Route } from 'react-router-dom';
 
-const MusicPage = () => {
+const RoomsScreen = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [rooms, setRooms] = useState([]);
 
@@ -51,11 +51,11 @@ const MusicPage = () => {
   );
 };
 
-const MusicPageRoute = () => {
+const RoomsPageRoute = () => {
     return (
-      <Route path="/music" element={<MusicPage />} />
+      <Route path="/rooms" element={<RoomsScreen />} />
     );
   };
   
 
-export default MusicPage;
+export default RoomsScreen;

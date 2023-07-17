@@ -10,22 +10,18 @@ const SignupScreen = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // 요청을 보낼 URL
-    const url = 'http://127.0.0.1:8000/signup/'; // 실제 서버의 엔드포인트로 변경해야 함
-
     // POST 요청에 포함할 데이터
     const signinData = {
       'email': email, 
       'password': password, 
       'nickname': nickname,
     };
-    const config = {"Content-Type": 'application/json'};
+
     console.log(email);
     console.log(password);
     console.log(nickname);
-    console.log(signinData)
     // POST 요청 보내기
-    axios.post(url, signinData, config)
+    client.post('signup/', signinData)
       .then((response) => {
         // 요청에 대한 성공 응답 처리
         console.log(response.data);

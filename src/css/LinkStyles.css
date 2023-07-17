@@ -1,0 +1,11 @@
+/* Remove text decoration */
+a {
+  text-decoration: none;
+}
+
+/* Prevent color change on link click */
+a:active,
+a:focus,
+a:visited {
+  color: inherit;
+}

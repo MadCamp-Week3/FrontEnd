@@ -1,0 +1,21 @@
+/* HomeScreen.css */
+
+.home-page {
+  display: flex;
+  align-items: center;
+}
+
+.highlights-section {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  margin: 40px 20px 60px 400px;
+}
+
+.posts-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin: 10px;
+}

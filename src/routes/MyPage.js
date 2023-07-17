@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import './MyPage.css';
-import MusicPage from './MusicPage';
+import '../css/MyPage.css';
+import MusicPage from './RoomsScreen';
 
 const MyPage = () => {
   const [activeButton, setActiveButton] = useState('posts');

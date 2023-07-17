@@ -3,14 +3,21 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import StartScreen from './routes/StartScreen';
 import SignupScreen from './routes/SignupScreen';
 import LoginScreen from './routes/LoginScreen';
-import HomePage from './routes/HomePage';
-import MusicPage from './routes/MusicPage';
+import HomeScreen from './routes/HomeScreen';
+import RoomsScreen from './routes/RoomsScreen';
+import SearchScreen from './routes/SearchScreen';
 import MyPage from './routes/MyPage';
 import Sidebar from './routes/Sidebar';
 import SignInSide from './routes/SignInSide';
 import SpotifyPlayerComponent from './routes/Spotify';
 import SpotifySearch from './routes/spotifySearch';
 import SpotifyPlayer from './routes/SpotifyPlayer';
+
+import './App.css'
+import HighlightScreen from './routes/HighlightScreen';
+import StoriesTest from './routes/StoriesTest';
+import Test from './routes/test';
+
 
 export const TokenContext = createContext();
 
@@ -45,23 +52,36 @@ const App = () => {
   return (
     <TokenContext.Provider value={{ token, setToken, logout, CLIENT_ID, REDIRECT_URI, RESPONSE_TYPE, AUTH_ENDPOINT }}>
       <div className='App'>
-      {/* <script src="https://sdk.scdn.co/spotify-player.js"></script> */}
-        <Sidebar />
+        {/* <script src="https://sdk.scdn.co/spotify-player.js"></script> */}
+        <div className='Sidebar-container'>
+          <Sidebar />
+        </div>
+        <div className='Content'>
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/mypage" element={<MyPage />} />
-            <Route path="/music" element={<MusicPage />} />
-            <Route path="/start" element={<StartScreen/>} />
             <Route path="/login" element={<LoginScreen/>} />
             <Route path="/signup" element={<SignupScreen/>} />
-            <Route path="/llllogin" element={<SignInSide/>} />
+            
+            <Route path="/" element={<HomeScreen />} />
+            <Route path="/mypage" element={<MyPage />} />
+            <Route path="/rooms" element={<RoomsScreen />} /> 
+            <Route path="/search" element={<SearchScreen />} />
+            <Route path="/start" element={<StartScreen/>} />
+            
+            <Route path="/highlight/:param" element={<HighlightScreen />} />
+
+            <Route path="/stories" element={<StoriesTest />} />
+
+            <Route path="/test" element={<Test />} />
+
+            {/* <Route path="/llllogin" element={<SignInSide/>} /> */}
             <Route path="/spotifySearch" element={<SpotifySearch/>} />
             <Route path="/spotify" element={<SpotifyPlayerComponent/>} />
             <Route path="/spotifyPlayer" element={<SpotifyPlayer/>} />
           </Routes>
+        </div>
       </div>
     </TokenContext.Provider>
-  );  
-};
+  );
+}
 
 export default App;
