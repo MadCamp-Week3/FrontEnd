@@ -1,0 +1,14 @@
+.highlightScreen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.highlights {
+  display: flex;
+  height: fit-content;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+}

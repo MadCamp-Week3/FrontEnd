@@ -4,3 +4,17 @@ body {
   padding: 0;
   color: white
 }
+
+.app {
+  display: flex;
+}
+
+.sidebar-container {
+  flex: 1;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  height: 100%;
+}
