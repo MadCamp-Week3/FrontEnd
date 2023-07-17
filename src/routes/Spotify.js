@@ -55,7 +55,7 @@ const SpotifyPlayerComponent = () => {
   return (
     <div>
       <h1>Spotify Web Playback SDK Quick Start</h1>
-      <script src="https://sdk.scdn.co/spotify-player.js"></script>
+      {/* <script src="https://sdk.scdn.co/spotify-player.js"></script> */}
       <button onClick={() => console.log('Toggle Play')}>Toggle Play</button>
       <SpotifyPlayer />
     </div>

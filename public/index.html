@@ -9,10 +9,9 @@
       name="description"
       content="Web site created using create-react-app"
     />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; connect-src 'self' https://*.spotify.com https://www.google-analytics.com https://*.ingest.sentry.io https://stats.g.doubleclick.net; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://sdk.scdn.co https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://www.google-analytics.com; font-src 'self' https://fonts.gstatic.com"
-    />
+    <meta http-equiv="Content-Security-Policy" content="default-src * self blob: data: gap:; style-src * self 'unsafe-inline' blob: data: gap:; script-src * 'self' 'unsafe-eval' 'unsafe-inline' blob: data: gap:; object-src * 'self' blob: data: gap:; img-src * self 'unsafe-inline' blob: data: gap:; connect-src self * 'unsafe-inline' blob: data: gap:; frame-src * self blob: data: gap:;">
+
+
 
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
@@ -30,6 +29,8 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <!-- <script src="https://sdk.scdn.co/spotify-player.js"></script> -->
+
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
