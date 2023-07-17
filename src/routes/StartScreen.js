@@ -6,7 +6,7 @@ const StartScreen = () => {
     <div>
       <h1>Welcome to the Start Screen</h1>
       <Link to="/login"><button>Login</button></Link>
-      <Link to="/signin"><button>Sign Up</button></Link>
+      <Link to="/signup"><button>Sign Up</button></Link>
     </div>
   );
 };
