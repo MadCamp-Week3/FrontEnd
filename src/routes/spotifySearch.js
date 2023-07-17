@@ -1,36 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import { TokenContext } from '../App';  // Assume your App component is one level up in the directory
 
 const SpotifySearch = () => {
-  const CLIENT_ID = "8dfdcd03dc99405ea6a805c7cb932859";
-  const REDIRECT_URI = "http://localhost:3000";
-  const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
-  const RESPONSE_TYPE = "token";
-
-  const [token, setToken] = useState("");
+  const { token, logout, CLIENT_ID, REDIRECT_URI, RESPONSE_TYPE, AUTH_ENDPOINT } = useContext(TokenContext);
   const [searchKey, setSearchKey] = useState("");
   const [artists, setArtists] = useState([]);
-
-  useEffect(() => {
-    const hash = window.location.hash;
-    let token = window.localStorage.getItem("token");
-    if (!token && hash) {
-      token = hash
-        .substring(1)
-        .split("&")
-        .find((elem) => elem.startsWith("access_token"))
-        .split("=")[1];
-      console.log(token);
-      window.location.hash = "";
-      window.localStorage.setItem("token", token);
-    }
-    setToken(token);
-  }, []);
-
-  const logout = () => {
-    setToken("");
-    window.localStorage.removeItem("token");
-  };
 
   const searchArtists = async (e) => {
     e.preventDefault();
