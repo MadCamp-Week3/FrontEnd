@@ -26,9 +26,35 @@ const Test = () => {
 
   console.log(ids);
 
+  const createPlaylist = async () => {
+    const userId = '31v7isepq2h46nhijpyddjys5xsu'; // Replace with the user ID of the target user
+    const playlistName = 'My Awesome Playlist';
+  
+    try {
+      const response = await axios.post(
+        `https://api.spotify.com/v1/users/${userId}/playlists`,
+        {
+          name: playlistName,
+          public: true, // Set to true if you want the playlist to be public
+          description: 'some playlist'
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+  
+      console.log('Playlist created:', response.data);
+    } catch (error) {
+      console.error('Error creating playlist:', error);
+    }
+  };
+
   return (
     <div className='main-content'>
-      dfs
+      <div onClick={createPlaylist}>create playlist</div>
     </div>
     );
 };

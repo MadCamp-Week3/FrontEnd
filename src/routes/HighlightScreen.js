@@ -111,29 +111,31 @@ function HighlightScreen() {
 
   return (
     <div className='highlightScreen'>
-      <div className='moveButton' onClick={moveToPrev}>
-        <img className="frame" alt="Frame" src={require('../images/arrow-left-icon.svg').default}  />
-      </div>
-      <div className='highlights'>
-        <Stories
-          stories={currentHighlights}
-          width='100%'
-          height='100%'
-          storyContainerStyles={storyStyle}
-          preventDefault={true}
-          keyboardNavigation={true}
-          defaultInterval={2000}
-          onAllStoriesEnd={() => {
-            setTimeout(() => {
-              moveToNext();
-            }, 4000)
-          }}
-          preloadCount={3}
-        />
-      </div>
-      <div className='moveButton' onClick={moveToNext}>
-        <img className="frame" alt="Frame" src={require('../images/arrow-right-icon.svg').default}  />
-      </div>
+
+        <div className='moveButton' onClick={moveToPrev}>
+          <img className="frame" alt="Frame" src={require('../images/arrow-left-icon.svg').default}  />
+        </div>
+        <div className='highlights'>
+          <Stories
+            stories={currentHighlights}
+            width='100%'
+            height='100%'
+            storyContainerStyles={storyStyle}
+            preventDefault={true}
+            keyboardNavigation={true}
+            defaultInterval={2000}
+            onAllStoriesEnd={() => {
+              setTimeout(() => {
+                moveToNext();
+              }, 4000)
+            }}
+            preloadCount={3}
+          />
+        </div>
+        <div className='moveButton' onClick={moveToNext}>
+          <img className="frame" alt="Frame" src={require('../images/arrow-right-icon.svg').default}  />
+        </div>
+
     </div>
   );
 }

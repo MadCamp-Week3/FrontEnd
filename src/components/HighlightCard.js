@@ -32,6 +32,8 @@ const HighlightCard = ( {songIds, userId, userPictureURL, content} ) => {
     
     fetchData(token, songIds);
   }, []);
+  
+  
   //TODO db연결
   
   console.log('songs are');
@@ -89,6 +91,7 @@ const HighlightCard = ( {songIds, userId, userPictureURL, content} ) => {
       </div>
     </div>
   );
+  
 }
 
 export default HighlightCard;

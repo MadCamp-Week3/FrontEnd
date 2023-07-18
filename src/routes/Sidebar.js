@@ -52,6 +52,22 @@ function Sidebar() {
             </div>
           </div>
         </Link>
+        <Link to='/spotifyProfile2'>
+          <div className="menu-item-layout">
+            {/* <img className="frame" alt="Frame" src={require('../images/login-icon.svg').default}  /> */}
+            <div className="auto-layout">
+              <div className="text-wrapper">Spotify Profile2</div>
+            </div>
+          </div>
+        </Link>
+        <Link to='/spotifyPlayer'>
+          <div className="menu-item-layout">
+            {/* <img className="frame" alt="Frame" src={require('../images/login-icon.svg').default}  /> */}
+            <div className="auto-layout">
+              <div className="text-wrapper">Spotify Player</div>
+            </div>
+          </div>
+        </Link>
       </div>
     </div>
   );

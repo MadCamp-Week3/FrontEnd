@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import '../css/MyPage.css';
 import MusicPage from './RoomsScreen';
+import Component1 from '../components/Component1';
+import Component2 from '../components/Component2';
+import Component3 from '../components/Component3';
+
 
 const MyPage = () => {
   const [activeButton, setActiveButton] = useState('posts');
@@ -12,28 +16,13 @@ const MyPage = () => {
 
   const renderContent = () => {
     if (activeButton === 'posts') {
-      return (
-        <div>
-          <h2>게시글 컴포넌트</h2>
-          {/* 게시글 내용 */}
-        </div>
-      );
+      return <Component1 />;
     } else if (activeButton === 'achievements') {
-      return (
-        <div>
-          <h2>업적 컴포넌트</h2>
-          {/* 업적 내용 */}
-        </div>
-      );
+      return <Component2 />;
     } else if (activeButton === 'recommendedMusic') {
-      return (
-        <div>
-          <h2>추천 음악 컴포넌트</h2>
-          {/* 추천 음악 내용 */}
-        </div>
-      );
+      return <Component3 />;
     }
-  };
+    };
 
   const profilePicUrl = 'https://example.com/profile-pic.jpg';
   const profileMusic = 'https://example.com/profile-music.mp3';
@@ -47,7 +36,7 @@ const MyPage = () => {
   return (
     // <Router>
     <div className="container">
-    <div className="main-content">
+      <div className="main-content">
         <h1>마이 페이지</h1>
         <img src={profilePicUrl} alt="프로필 사진" />
         <audio src={profileMusic} controls />
@@ -55,28 +44,25 @@ const MyPage = () => {
         <button onClick={handleMoreClick}>더보기</button>
 
         <div className="buttons">
-        <button
+          <div 
             onClick={() => handleButtonClick('posts')}
-            className={activeButton === 'posts' ? 'active' : ''}
-        >
-            게시글
-        </button>
-        <button
+            className={activeButton === 'posts' ? 'active' : ''}>
+              내 플레이리스트
+          </div>
+          <div 
             onClick={() => handleButtonClick('achievements')}
-            className={activeButton === 'achievements' ? 'active' : ''}
-        >
-            업적
-        </button>
-        <button
+            className={activeButton === 'achievements' ? 'active' : ''}>
+              업적
+          </div>
+          <div 
             onClick={() => handleButtonClick('recommendedMusic')}
-            className={activeButton === 'recommendedMusic' ? 'active' : ''}
-        >
-            추천 음악
-        </button>
+            className={activeButton === 'recommendedMusic' ? 'active' : ''}>
+              좋아하는 아티스트
+          </div>
         </div>
 
         <div className="content">{renderContent()}</div>
-    </div>
+      </div>
     </div>
 
     
