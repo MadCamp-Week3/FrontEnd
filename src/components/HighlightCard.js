@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
 import '../css/HomeScreen/HighlightCard.css'
 import addIcon from '../images/add-icon.svg';
-import { FetchTracksByIds, SearchSongs, addSongToPlaylist } from '../functions/spotify';
+import { FetchTracksByIds, SearchSongs, addSongToPlaylist } from '../functions/spotify.js';
 import { TokenContext } from '../App';  // Assume your App component is one level up in the directory
 
-const HighlightCard = ( {songIds = [1, 2, 3], userId, userPictureURL, caption} ) => {
+const HighlightCard = ( {songIds, userId, userPictureURL, caption} ) => {
   const [songs, setSongs] = useState([]);
   const { token, logout, CLIENT_ID, REDIRECT_URI, RESPONSE_TYPE, AUTH_ENDPOINT } = useContext(TokenContext);
 
@@ -14,21 +14,30 @@ const HighlightCard = ( {songIds = [1, 2, 3], userId, userPictureURL, caption} )
     '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
   ]
 
+  console.log(`highlightcard happened`);
+
   useEffect(() => {
-    async function fetchData() {
+    console.log('fetch start 2');
+    async function fetchData(token, songIds) {
+      console.log('fetch start');
       const tracks = await FetchTracksByIds(token, songIds);
       console.log('fetch complete');
       console.log(tracks);
 
       return tracks.map((track) => ({
-        id: track.id,
+        id: track?.id,
         albumCover: track.album.images[0].url,
         title: track.name,
         artist: track.artists[0].name,
       }))
     }
-    setSongs(fetchData())
-  }, [])
+    console.log(`use effect happened`)
+    setSongs(fetchData([
+      '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
+      '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
+      '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
+    ]))
+  }, []);
   //TODO db연결
   
 

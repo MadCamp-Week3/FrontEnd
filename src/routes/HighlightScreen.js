@@ -14,17 +14,17 @@ function HighlightScreen() {
   const [currentIndex, setCurrentIndex] = useState(initIndex);
   const [highlightData, setHighlightData] = useState([[]]);
 
-  useEffect(() => {
-    const fetchHighlightData = async () => {
-      try {
-        const response = await client.get('/api/highlights'); // Replace '/api/highlights' with your actual API endpoint
-        setHighlightData(response.data); //create model for highlightdata
-      } catch (error) {
-        console.error('Error fetching highlight data:', error);
-      }
-    }
-    fetchHighlightData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchHighlightData = async () => {
+  //     try {
+  //       const response = await client.get('/api/highlights'); // Replace '/api/highlights' with your actual API endpoint
+  //       setHighlightData(response.data); //create model for highlightdata
+  //     } catch (error) {
+  //       console.error('Error fetching highlight data:', error);
+  //     }
+  //   }
+  //   fetchHighlightData();
+  // }, []);
 
 
   const moveToNext = () => {
@@ -41,17 +41,29 @@ function HighlightScreen() {
 
   const currentHighlightData = [
     {
-      songIds : [1,2,3],
+      songIds : [
+        '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
+        '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
+        '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
+      ],
       userId : 1,
       content : 'first card'
     },
     {
-      songIds : [1,2,3],
+      songIds : [
+        '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
+        '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
+        '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
+      ],
       userId : 1,
       content : 'second card'
     },
     {
-      songIds : [1,2,3],
+      songIds : [
+        '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
+        '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
+        '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
+      ],
       userId : 1,
       content : 'second card'
     }

@@ -43,7 +43,7 @@ const SearchSongsByKey = async (token, searchKey) => {
 }
 
 const FetchTracksByIds = async (token, Ids) => {
-  console.log(Ids);
+  console.log(`ids are ${Ids}`);
 
   try {
     const response = await axios.get(
@@ -57,11 +57,12 @@ const FetchTracksByIds = async (token, Ids) => {
         },
       }
     );
-    console.log(response.data.tracks);
+    console.log(`fetch tracks returnes ${response.data.tracks}`);
     return response.data.tracks;
   } catch (error) {
+    console.log('fetch tracks failed')
     console.error('Error searching for song:', error);
   }
 }
 
-export { addSongToPlaylist, SearchSongsByKey, FetchTracksByIds }
+export { addSongToPlaylist, SearchSongsByKey, FetchTracksByIds };
