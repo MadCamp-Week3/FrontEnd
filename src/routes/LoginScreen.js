@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import client from '../client';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { TokenContext } from '../App';  // Assume your App component is one level up in the directory
 
 const LoginScreen = () => {
+  const { token, logout, CLIENT_ID, REDIRECT_URI, RESPONSE_TYPE, AUTH_ENDPOINT } = useContext(TokenContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -20,7 +22,7 @@ const LoginScreen = () => {
     client.post('login/', loginData) // 서버의 로그인 엔드포인트에 맞게 URL을 변경해주세요
       .then((response) => {
         console.log(response.data);  // Handle the server response
-        navigate('/mypage');
+        navigate('/');
       })
       .catch((error) => {
         console.error(error);  // Handle any error that occurred during the HTTP request
@@ -29,6 +31,16 @@ const LoginScreen = () => {
 
   return (
     <div>
+      <h1>Spotify Login</h1>
+        {!token ? (
+          <a
+            href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
+          >
+            Login to Spotify
+          </a>
+        ) : (
+          <button onClick={logout}>Logout</button>
+        )}
       <h1>Login Page</h1>
       <form onSubmit={handleSubmit}>
         <label>
