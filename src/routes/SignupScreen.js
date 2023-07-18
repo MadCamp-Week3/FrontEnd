@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import client from '../client';
 
 const SignupScreen = () => {

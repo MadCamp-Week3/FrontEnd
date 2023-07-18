@@ -20,7 +20,7 @@ function Sidebar() {
             </div>
           </div>
         </Link>
-        <Link to="/">
+        <Link to="/home">
           <div className="menu-item-layout">
             <img className="frame" alt="Frame" src={require('../images/home-icon.svg').default}  />
             <div className="auto-layout">
