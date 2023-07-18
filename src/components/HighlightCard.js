@@ -4,49 +4,38 @@ import addIcon from '../images/add-icon.svg';
 import { FetchTracksByIds, SearchSongs, addSongToPlaylist } from '../functions/spotify.js';
 import { TokenContext } from '../App';  // Assume your App component is one level up in the directory
 
-const HighlightCard = ( {songIds, userId, userPictureURL, caption} ) => {
+const HighlightCard = ( {songIds, userId, userPictureURL, content} ) => {
   const [songs, setSongs] = useState([]);
   const { token, logout, CLIENT_ID, REDIRECT_URI, RESPONSE_TYPE, AUTH_ENDPOINT } = useContext(TokenContext);
 
-  songIds = [
-    '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
-    '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
-    '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
-  ]
-
-  console.log(`highlightcard happened`);
+  console.log(`song ids are`); //
+  console.log(songIds); //
+  console.log(`tokens are ${token}`); //
 
   useEffect(() => {
     console.log('fetch start 2');
     async function fetchData(token, songIds) {
-      console.log('fetch start');
+      console.log('fetch start'); //
       const tracks = await FetchTracksByIds(token, songIds);
-      console.log('fetch complete');
-      console.log(tracks);
+      console.log('fetch complete'); //
+      console.log(tracks); //
 
-      return tracks.map((track) => ({
-        id: track?.id,
+      const formattedSongs = tracks.map((track) => ({
+        id: track.id,
         albumCover: track.album.images[0].url,
         title: track.name,
         artist: track.artists[0].name,
-      }))
+      }));
+
+      setSongs(formattedSongs);
     }
-    console.log(`use effect happened`)
-    setSongs(fetchData([
-      '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
-      '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
-      '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
-    ]))
+    
+    fetchData(token, songIds);
   }, []);
   //TODO db연결
   
-
-
-  // setSongs( [
-  //   { id: 1, coverURL: 'https://picsum.photos/60/60', title: 'Song 1', artist: 'Artist 1' },
-  //   { id: 2, coverURL: 'https://picsum.photos/60/60', title: 'Song 2', artist: 'Artist 2' },
-  //   { id: 3, coverURL: 'https://picsum.photos/60/60', title: 'Song 3', artist: 'Artist 3' },
-  // ] );
+  console.log('songs are');
+  console.log(songs);
 
   function HighlightItem({ id, albumCover, title, artist }) {
 
@@ -82,22 +71,20 @@ const HighlightCard = ( {songIds, userId, userPictureURL, caption} ) => {
   }
 
   //TODO db 연결
-  const profileURL= "https://picsum.photos/60/60";
   const profileName = "John Doe"; //with userId
-  caption = "lorem ipsum"; //= content
 
-  // const profileURL= userPictureURL;
-  // const profileName = "John Doe"; //with userId
-  // const caption = content;
-  
+  const profileURL= userPictureURL;
+  // const profileName = "John Doe"; //with userId 
 
   return (
     <div className="highlightCard">
       <div className='highlightContainer'>
-        <HighlightInfo profileURL={profileURL} profileName={profileName} caption={caption}/>
-        <HighlightItem id={songs[0].id} albumCover={songs[0].albumCover} title={songs[0].title} artist={songs[0].artist} />
-        <HighlightItem id={songs[1].id} albumCover={songs[1].albumCover} title={songs[1].title} artist={songs[1].artist} />
-        <HighlightItem id={songs[2].id} albumCover={songs[2].albumCover} title={songs[2].title} artist={songs[2].artist} />
+        <HighlightInfo profileURL={profileURL} profileName={profileName} caption={content}/>
+        {songs && songs.length > 0 && (<>
+          <HighlightItem id={songs[0].id} albumCover={songs[0].albumCover} title={songs[0].title} artist={songs[0].artist} />
+          <HighlightItem id={songs[1].id} albumCover={songs[1].albumCover} title={songs[1].title} artist={songs[1].artist} />
+         <HighlightItem id={songs[2].id} albumCover={songs[2].albumCover} title={songs[2].title} artist={songs[2].artist} />
+        </>)}
       </div>
     </div>
   );

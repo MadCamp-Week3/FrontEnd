@@ -43,7 +43,7 @@
 }
 
 .highlightItem {
-  padding: 28px;
+  padding: 22px;
   flex: 1;
   box-sizing: border-box;
   width: 100%;
@@ -58,6 +58,7 @@
 .album-cover {
   height: 100%;
   object-fit: contain;
+  max-width: 60px;
   border-radius: 5px;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
 }
