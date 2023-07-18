@@ -25,7 +25,7 @@ export const TokenContext = createContext();
 
 const App = () => {
   const CLIENT_ID = "8dfdcd03dc99405ea6a805c7cb932859";
-  const REDIRECT_URI = "http://localhost:3000";
+  const REDIRECT_URI = "http://localhost:3000/home";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
 
