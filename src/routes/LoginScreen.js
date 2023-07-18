@@ -3,11 +3,14 @@ import client from '../client';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { TokenContext } from '../App';  // Assume your App component is one level up in the directory
+import { UserContext } from '../App';
 
 const LoginScreen = () => {
+  const { user, setUser } = useContext(UserContext);
   const { token, logout, CLIENT_ID, REDIRECT_URI, RESPONSE_TYPE, AUTH_ENDPOINT } = useContext(TokenContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -24,7 +27,10 @@ const LoginScreen = () => {
     client.post('login/', loginData)
       .then((response) => {
         console.log(response.data);
+        setUser(response.data);
         navigate('/login');
+        console.log("login success")
+        setIsLoggedIn(true);
       })
       .catch((error) => {
         console.error(error);
@@ -34,8 +40,11 @@ const LoginScreen = () => {
   const handleLogout = () => {
     // Send a request to the logout endpoint
     client.post('logout/')
-      .then(() => {
+      .then((response) => {
         navigate('/login');  // Redirect to the home page after logout
+        console.log(response)
+        setIsLoggedIn(false);
+        setUser(null);
       })
       .catch((error) => {
         console.error(error);
@@ -44,11 +53,13 @@ const LoginScreen = () => {
 
   // Check the login status on component mount
   useEffect(() => {
+    console.log(user);
     client.get('isLoggedIn/')
       .then((response) => {
+        setIsLoggedIn(response.data.isLoggedIn);
+        console.log(response)
         if (response.data.isLoggedIn) {
-          // If the user is logged in, redirect them to the home page
-          navigate('/');
+          navigate('/login');
         }
       })
       .catch((error) => {
@@ -58,7 +69,7 @@ const LoginScreen = () => {
 
   return (
     <div>
-      <h1>Display your Spotify profile data</h1>
+      {/* <h1>Display your Spotify profile data</h1>
       <section id="profile">
       <h2>Logged in as <span id="displayName"></span></h2>
       <span id="avatar"></span>
@@ -80,38 +91,45 @@ const LoginScreen = () => {
           </a>
         ) : (
           <button onClick={logout}>Logout</button>
-        )}
+        )} */}
 
-      <h1>Login Page</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email:
-          <input
-            name="email"
-            type="email"
-            placeholder='이메일을 입력하세요'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input
-            name="password"
-            type="password"
-            placeholder='비밀번호를 입력하세요'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <br />
-        <button type="submit">로그인</button>
-      </form>
-
-      <button onClick={handleLogout}>로그아웃</button>
+      {user ? (
+        <div>
+          <h1>로그아웃</h1>
+          <button onClick={handleLogout}>로그아웃</button>
+        </div>
+      ) : (
+        <div>
+          <h1>로그인 페이지</h1>
+          <form onSubmit={handleSubmit}>
+            <label>
+              Email:
+              <input
+                name="email"
+                type="email"
+                placeholder='이메일을 입력하세요'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </label>
+            <br />
+            <label>
+              Password:
+              <input
+                name="password"
+                type="password"
+                placeholder='비밀번호를 입력하세요'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </label>
+            <br />
+            <button type="submit">로그인</button>
+          </form>
+        </div>
+      )}
     </div>
   );
 };
