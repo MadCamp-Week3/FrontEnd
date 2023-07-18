@@ -44,11 +44,17 @@ function Sidebar() {
             </div>
           </div>
         </Link>
+        <Link to="/login">
+          <div className="menu-item-layout">
+            {/* <img className="frame" alt="Frame" src={require('../images/login-icon.svg').default}  /> */}
+            <div className="auto-layout">
+              <div className="text-wrapper">Login</div>
+            </div>
+          </div>
+        </Link>
       </div>
     </div>
   );
-
-  
 }
 
 export default Sidebar;
