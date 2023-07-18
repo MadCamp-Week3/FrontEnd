@@ -36,7 +36,7 @@ const MyPage = () => {
   return (
     // <Router>
     <div className="container">
-    <div className="main-content">
+      <div className="main-content">
         <h1>마이 페이지</h1>
         <img src={profilePicUrl} alt="프로필 사진" />
         <audio src={profileMusic} controls />
@@ -44,28 +44,25 @@ const MyPage = () => {
         <button onClick={handleMoreClick}>더보기</button>
 
         <div className="buttons">
-        <button
+          <div 
             onClick={() => handleButtonClick('posts')}
-            className={activeButton === 'posts' ? 'active' : ''}
-        >
-            내 플레이리스트
-        </button>
-        <button
+            className={activeButton === 'posts' ? 'active' : ''}>
+              내 플레이리스트
+          </div>
+          <div 
             onClick={() => handleButtonClick('achievements')}
-            className={activeButton === 'achievements' ? 'active' : ''}
-        >
-            업적
-        </button>
-        <button
+            className={activeButton === 'achievements' ? 'active' : ''}>
+              업적
+          </div>
+          <div 
             onClick={() => handleButtonClick('recommendedMusic')}
-            className={activeButton === 'recommendedMusic' ? 'active' : ''}
-        >
-            좋아하는 아티스트
-        </button>
+            className={activeButton === 'recommendedMusic' ? 'active' : ''}>
+              좋아하는 아티스트
+          </div>
         </div>
 
         <div className="content">{renderContent()}</div>
-    </div>
+      </div>
     </div>
 
     
