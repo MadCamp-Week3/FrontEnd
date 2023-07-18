@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import client from '../client';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -29,9 +29,29 @@ const LoginScreen = () => {
       });
   };
 
+
+
+
+
+
+
   return (
     <div>
-      <h1>Spotify Login</h1>
+      <h1>Display your Spotify profile data</h1>
+      <section id="profile">
+      <h2>Logged in as <span id="displayName"></span></h2>
+      <span id="avatar"></span>
+      <ul>
+          <li>User ID: <span id="id"></span></li>
+          <li>Email: <span id="email"></span></li>
+          <li>Spotify URI: <a id="uri" href="#"></a></li>
+          <li>Link: <a id="url" href="#"></a></li>
+          <li>Profile Image: <span id="imgUrl"></span></li>
+      </ul>
+      </section>
+
+
+      <h1>Spotify Login(without auth)</h1>
         {!token ? (
           <a
             href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}

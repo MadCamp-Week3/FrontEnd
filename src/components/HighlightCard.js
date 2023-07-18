@@ -18,26 +18,24 @@ const HighlightCard = ( {songIds, userId, userPictureURL, caption} ) => {
 
   useEffect(() => {
     console.log('fetch start 2');
-    async function fetchData(token, songIds) {
+    async function fetchDataAndSetSongs() {
       console.log('fetch start');
       const tracks = await FetchTracksByIds(token, songIds);
       console.log('fetch complete');
       console.log(tracks);
-
+  
       return tracks.map((track) => ({
-        id: track?.id,
+        id: track.id,
         albumCover: track.album.images[0].url,
         title: track.name,
         artist: track.artists[0].name,
       }))
     }
     console.log(`use effect happened`)
-    setSongs(fetchData([
-      '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
-      '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
-      '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
-    ]))
+    fetchDataAndSetSongs().then(songs => setSongs(songs));
   }, []);
+  
+  
   //TODO db연결
   
 
@@ -95,12 +93,17 @@ const HighlightCard = ( {songIds, userId, userPictureURL, caption} ) => {
     <div className="highlightCard">
       <div className='highlightContainer'>
         <HighlightInfo profileURL={profileURL} profileName={profileName} caption={caption}/>
-        <HighlightItem id={songs[0].id} albumCover={songs[0].albumCover} title={songs[0].title} artist={songs[0].artist} />
-        <HighlightItem id={songs[1].id} albumCover={songs[1].albumCover} title={songs[1].title} artist={songs[1].artist} />
-        <HighlightItem id={songs[2].id} albumCover={songs[2].albumCover} title={songs[2].title} artist={songs[2].artist} />
+        {songs && songs.length > 0 && (
+          <>
+            <HighlightItem id={songs[0].id} albumCover={songs[0].albumCover} title={songs[0].title} artist={songs[0].artist} />
+            <HighlightItem id={songs[1].id} albumCover={songs[1].albumCover} title={songs[1].title} artist={songs[1].artist} />
+            <HighlightItem id={songs[2].id} albumCover={songs[2].albumCover} title={songs[2].title} artist={songs[2].artist} />
+          </>
+        )}
       </div>
     </div>
   );
+  
 }
 
 export default HighlightCard;
