@@ -39,40 +39,34 @@ function HighlightScreen() {
 
   //currentHighlightData = highlightData[currentIndex];
 
-  const currentHighlightData = [
-    {
+  const currentHighlightData = {
       songIds : [
-        '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
-        '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
-        '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
+        '5sdQOyqq2IDhvmx2lHOpwd',
+        '6rqhFgbbKwnb9MLmUQDhG6',
+        '5sdQOyqq2IDhvmx2lHOpwd',
       ],
       userId : 1,
-      content : 'first card'
-    },
-    {
-      songIds : [
-        '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
-        '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
-        '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
-      ],
-      userId : 1,
-      content : 'second card'
-    },
-    {
-      songIds : [
-        '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
-        '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
-        '6rdkCkjk6D12xRpdMXy0I2?si=bfc93e82763d4a9d',
-      ],
-      userId : 1,
-      content : 'second card'
-    }
-  ]
+      userPictureURL : "https://picsum.photos/60/60",
+      content : 'lorem ipsum blah'
+  };
 
-  const currentHighlights = currentHighlightData.map((item, index) => ({
-    content: () => HighlightCard(item.songIds, item.userId, item.content),
-    key: index
-  }));
+  const currentHighlightCard = <HighlightCard 
+    songIds={currentHighlightData.songIds} 
+    userId={currentHighlightData.userId}
+    userPictureURL={currentHighlightData.userPictureURL} 
+    content={currentHighlightData.content} />
+
+  const currentHighlights = [{
+    content: () => currentHighlightCard,
+    key: 0
+    }, {
+      content: () => currentHighlightCard,
+      key: 1
+    }, {
+      content: () => currentHighlightCard,
+      key: 2
+    }
+  ];
 
   const storyStyle = {
     backgroundColor : 'transparent',

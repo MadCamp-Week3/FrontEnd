@@ -44,6 +44,7 @@ const SearchSongsByKey = async (token, searchKey) => {
 
 const FetchTracksByIds = async (token, Ids) => {
   console.log(`ids are ${Ids}`);
+  console.log('fetch start')
 
   try {
     const response = await axios.get(
@@ -57,6 +58,7 @@ const FetchTracksByIds = async (token, Ids) => {
         },
       }
     );
+    console.log('fetch complete');
     console.log(`fetch tracks returnes ${response.data.tracks}`);
     return response.data.tracks;
   } catch (error) {
