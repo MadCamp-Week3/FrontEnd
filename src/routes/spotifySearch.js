@@ -23,6 +23,8 @@ const SpotifySearch = () => {
   };
 
   const renderArtists = () => {
+    console.log(CLIENT_ID);
+
     return artists.map((artist) => (
       <div key={artist.id}>
         {artist.images.length ? (

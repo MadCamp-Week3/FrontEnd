@@ -42,7 +42,9 @@ const SearchSongsByKey = async (token, searchKey) => {
   }
 }
 
-const FetchSongsByURI = async (token, URIs) => {
+const FetchTracksByIds = async (token, Ids) => {
+  console.log(Ids);
+
   try {
     const response = await axios.get(
       `https://api.spotify.com/v1/tracks`,
@@ -51,7 +53,7 @@ const FetchSongsByURI = async (token, URIs) => {
           'Authorization': `Bearer ${token}`,
         },
         params: {
-          ids: URIs.join(','),
+          ids: Ids.join(','),
         },
       }
     );
@@ -62,4 +64,4 @@ const FetchSongsByURI = async (token, URIs) => {
   }
 }
 
-export { addSongToPlaylist, SearchSongsByKey, FetchSongsByURI}
+export { addSongToPlaylist, SearchSongsByKey, FetchTracksByIds }
