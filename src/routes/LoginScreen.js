@@ -12,28 +12,49 @@ const LoginScreen = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Send the form data to the server via HTTP using Axios
 
     const loginData = {
       'email': email,
       'password':password,
     }
 
-    client.post('login/', loginData) // 서버의 로그인 엔드포인트에 맞게 URL을 변경해주세요
+    // Ensure Axios sends cookies received from the server
+    axios.defaults.withCredentials = true;
+
+    client.post('login/', loginData)
       .then((response) => {
-        console.log(response.data);  // Handle the server response
-        navigate('/');
+        console.log(response.data);
+        navigate('/login');
       })
       .catch((error) => {
-        console.error(error);  // Handle any error that occurred during the HTTP request
+        console.error(error);
       });
   };
 
+  const handleLogout = () => {
+    // Send a request to the logout endpoint
+    client.post('logout/')
+      .then(() => {
+        navigate('/login');  // Redirect to the home page after logout
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
-
-
-
-
+  // Check the login status on component mount
+  useEffect(() => {
+    client.get('isLoggedIn/')
+      .then((response) => {
+        if (response.data.isLoggedIn) {
+          // If the user is logged in, redirect them to the home page
+          navigate('/');
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [navigate]);
 
   return (
     <div>
@@ -50,7 +71,6 @@ const LoginScreen = () => {
       </ul>
       </section>
 
-
       <h1>Spotify Login(without auth)</h1>
         {!token ? (
           <a
@@ -61,6 +81,7 @@ const LoginScreen = () => {
         ) : (
           <button onClick={logout}>Logout</button>
         )}
+
       <h1>Login Page</h1>
       <form onSubmit={handleSubmit}>
         <label>
@@ -89,6 +110,8 @@ const LoginScreen = () => {
         <br />
         <button type="submit">로그인</button>
       </form>
+
+      <button onClick={handleLogout}>로그아웃</button>
     </div>
   );
 };

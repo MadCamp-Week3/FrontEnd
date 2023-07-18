@@ -6,7 +6,32 @@ import HighlightCard from '../components/HighlightCard';
 import client from '../client';
 
 
+
 function HighlightScreen() {
+  // 서버의 URL
+  const serverURL = '/highlights';
+
+  // 요청을 보낼 데이터
+  const requestData = {
+    user: 'user_id_here',
+    song_id1: 'song_id1_here',
+    song_id2: 'song_id2_here',
+    song_id3: 'song_id3_here',
+    seconds1_start: 10,
+    seconds2_start: 20,
+    seconds3_start: 30,
+    caption: 'Caption text here',
+  };
+
+
+  client.post(serverURL, requestData)
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        })
+
   const { initIndex } = useParams();
 
   console.log(initIndex);
