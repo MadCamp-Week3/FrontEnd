@@ -12,6 +12,7 @@ import SignInSide from './routes/SignInSide';
 import SpotifyPlayerComponent from './routes/Spotify';
 import SpotifySearch from './routes/spotifySearch';
 import SpotifyPlayer from './routes/SpotifyPlayer';
+import SpotifyProfile from './routes/SpotifyProfile';
 
 import './App.css'
 import HighlightScreen from './routes/HighlightScreen';
@@ -77,6 +78,7 @@ const App = () => {
             <Route path="/spotifySearch" element={<SpotifySearch/>} />
             <Route path="/spotify" element={<SpotifyPlayerComponent/>} />
             <Route path="/spotifyPlayer" element={<SpotifyPlayer/>} />
+            <Route path="/spotifyProfile" element={<SpotifyProfile/>}/>
           </Routes>
         </div>
       </div>
