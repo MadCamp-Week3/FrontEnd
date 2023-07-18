@@ -16,7 +16,6 @@ import SpotifyProfile from './routes/SpotifyProfile';
 
 import './App.css'
 import HighlightScreen from './routes/HighlightScreen';
-import StoriesTest from './routes/StoriesTest';
 import Test from './routes/test';
 
 
@@ -69,8 +68,6 @@ const App = () => {
             <Route path="/start" element={<StartScreen/>} />
             
             <Route path="/highlight/:param" element={<HighlightScreen />} />
-
-            <Route path="/stories" element={<StoriesTest />} />
 
             <Route path="/test" element={<Test />} />
 
