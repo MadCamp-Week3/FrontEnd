@@ -40,6 +40,7 @@ const Component1 = () => {
       {/* <h1>Your Spotify Playlists</h1> */}
             {playlists && playlists.items.map((playlist, index) => (
                 <div key={index} onClick={() => handlePlaylistClick(playlist.id)}>
+                    {/* <h1>{ playlist.id }</h1> */}
                     {/* <h1>{playlist.uri}</h1> */}
                     <h2>{playlist.name}</h2>
                     <p>{playlist.description}</p>

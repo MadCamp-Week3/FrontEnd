@@ -1,23 +1,20 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 
-const addSongToPlaylist = async (token, playlistId, songUri) => {
-  try {
-    await axios.post(
-      `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
-      {
-        uris: [songUri],
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-      }
-    );
-    console.log('Song added to playlist successfully!');
-  } catch (error) {
-    console.error('Error adding song to playlist:', error);
+async function addSongToPlaylist(songId, playlistId) {
+  const response = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem("access_token")}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      uris: [`spotify:track:${songId}`]
+    })
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to add song to playlist: ${response.statusText}`);
   }
 }
 
@@ -53,7 +50,7 @@ const FetchTracksByIds = async (token, Ids) => {
       `https://api.spotify.com/v1/tracks`,
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          'Authorization': `Bearer ${token}`,
         },
         params: {
           ids: Ids.join(','),

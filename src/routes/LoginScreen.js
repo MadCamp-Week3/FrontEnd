@@ -49,6 +49,7 @@ const LoginScreen = () => {
       .catch((error) => {
         console.error(error);
       });
+      // window.localStorage.removeItem("token"); 
   };
 
   // Check the login status on component mount
@@ -99,7 +100,8 @@ const LoginScreen = () => {
         <h1>Spotify에 로그인하여 기능을 이용하세요</h1>
         {!token ? (
           <a
-            href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
+            // href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
+            onClick={() => navigate('/spotifyProfile2')}
           >
             Login to Spotify
           </a>
