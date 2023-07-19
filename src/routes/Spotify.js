@@ -7,6 +7,7 @@ const SpotifyPlayerComponent = () => {
   const { token, logout, CLIENT_ID, REDIRECT_URI, RESPONSE_TYPE, AUTH_ENDPOINT } = useContext(TokenContext);
 
   useEffect(() => {
+    const token = 'BQCKUhNX70JAJlT_vLyI7K-zqfrqzQqIuzylE6VxBkORNpKZ7r75MW9cddJOiuoJlWPNjXI2TTIqgwROeCt_v5BQyhubBKUp7XCL1qczTc-ANPvFj7f_QSIyZHF0Q_TxwIj9HCI6V4m7Rq-WrX_EwHwsgpsl6Uz52G5vKhy2zy_uSMuj0vgF1585o3x8xKKJcHTUL2gonw8DivLRY2Dm-2ZFM27MDTec';
 
     // 플레이어 준비
     const handleReady = ({ device_id }) => {
@@ -58,7 +59,7 @@ const SpotifyPlayerComponent = () => {
   return (
     <div>
       <h1>Spotify Web Playback SDK Quick Start</h1>
-      {/* <script src="https://sdk.scdn.co/spotify-player.js"></script> */}
+      <script src="https://sdk.scdn.co/spotify-player.js"></script>
       <button onClick={() => console.log('Toggle Play')}>Toggle Play</button>
       <SpotifyPlayer />
     </div>
