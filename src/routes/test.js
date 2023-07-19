@@ -52,9 +52,14 @@ const Test = () => {
     }
   };
 
+  const authorize = () => {
+    axios.get('https://api.spotify.com/v1/authorize')
+  }
+
   return (
     <div className='main-content'>
       <div onClick={createPlaylist}>create playlist</div>
+      <div onClick={authorize}></div>
     </div>
     );
 };
