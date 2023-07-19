@@ -10,7 +10,7 @@ const addSongToPlaylist = async (token, playlistId, songUri) => {
       },
       {
         headers: {
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
       }
@@ -23,6 +23,8 @@ const addSongToPlaylist = async (token, playlistId, songUri) => {
 
 const SearchSongsByKey = async (token, searchKey) => {
   try {
+    console.log('search songs by key start')
+
     const response = await axios.get(
       "https://api.spotify.com/v1/search", 
       {
@@ -51,7 +53,7 @@ const FetchTracksByIds = async (token, Ids) => {
       `https://api.spotify.com/v1/tracks`,
       {
         headers: {
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
         params: {
           ids: Ids.join(','),

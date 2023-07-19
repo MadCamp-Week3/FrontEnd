@@ -33,8 +33,7 @@ function SpotifyProfile2() {
                 }
                 }
                 
-                
-                
+               
                 
             })();
         }
@@ -55,6 +54,7 @@ function SpotifyProfile2() {
         params.append("response_type", "code");
         params.append("redirect_uri", redirectUri);
         params.append("scope", "user-read-private user-read-email user-follow-read");
+
         params.append("code_challenge_method", "S256");
         params.append("code_challenge", challenge);
     
@@ -113,6 +113,8 @@ function SpotifyProfile2() {
         const result = await fetch("https://api.spotify.com/v1/me", {
             method: "GET", headers: { Authorization: `Bearer ${token}` }
         });
+
+        console.log("result is", result);
     
         return await result.json();
     }
