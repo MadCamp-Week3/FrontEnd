@@ -1,0 +1,13 @@
+.ingyu {
+  width: 200px;
+  size: 40px;
+  border-radius: 10px;
+  background-color: #1ED760;
+}
+
+.search-layout {
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+  width: 400px;
+}

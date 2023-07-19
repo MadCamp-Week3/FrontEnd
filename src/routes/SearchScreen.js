@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import IngyuPlaylist from '../components/IngyuPlaylist';
+import { Link } from 'react-router-dom';
+import '../css/search.css'
 
 const SearchScreen = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -16,7 +18,7 @@ const SearchScreen = () => {
   };
 
   return (
-    <div>
+    <div className='search-layout'>
       <input 
         type="text" 
         value={searchTerm} 
@@ -24,7 +26,8 @@ const SearchScreen = () => {
         placeholder="Search..." 
       />
       <button onClick={handleSearch}>Search</button>
-      {showFetchButton && <button onClick={handleFetch}>Ingyu</button>}
+      {/* {showFetchButton && <button onClick={handleFetch}>Ingyu</button>} */}
+      {showFetchButton && <Link to='page=ingyu'><div className='ingyu'>Ingyu profile</div></Link>}
       {showPlaylists && <IngyuPlaylist />}
     </div>
   );

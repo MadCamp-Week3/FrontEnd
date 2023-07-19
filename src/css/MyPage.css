@@ -12,10 +12,14 @@
   margin-right: 220px;
 }
 
-.profile {
+.my-profile {
   display: flex;
   flex-direction: row;
   gap: 30px;
+}
+
+.my-profile-image {
+  border-radius: 50%;
 }
 
 .profile-info .text-wrapper {

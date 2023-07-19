@@ -10,15 +10,15 @@ const HomeScreen = () => {
   console.log(user);
   const highlights = [
     { id: 1, username: 'John Doe', imageURL: 'profile1.jpg' },
-    { id: 2, username: 'user2', imageURL: 'profile2.jpg' },
-    { id: 3, username: 'user3', imageURL: 'profile3.jpg' },
+    { id: 2, username: 'Emily Thomson', imageURL: 'profile2.jpg' },
+    { id: 3, username: 'Jack Jones', imageURL: 'profile3.jpg' },
   ];
 
   // 고정데이터로
   const posts = [
-    { id: 1, username: 'user1', imageURL: "require('../images/login-icon.svg').default", caption: '앨범 샀다!!1' },
-    { id: 2, username: 'user2', imageURL: "https://picsum.photos/60/60", caption: '아이유 예쁘다..' },
-    { id: 3, username: 'user3', imageURL: "https://picsum.photos/60/60", caption: 'LP' },
+    { id: 1, username: 'Ava Jenkins', imageURL: "https://picsum.photos/60/60", caption: '앨범 샀다!!1' },
+    { id: 2, username: 'Bruce Bowen', imageURL: "https://picsum.photos/60/60", caption: '아이유 예쁘다..' },
+    { id: 3, username: 'Lucas Rodriguez', imageURL: "https://picsum.photos/60/60", caption: 'LP' },
     // Add more posts
   ];
 
@@ -31,8 +31,7 @@ const HomeScreen = () => {
 
   return (
       <div className='main-content'>
-        <h1>Welcome, {user ? user.user : 'Guest'}!</h1>
-        <h1>Home</h1>
+        
         <div className='highlights-section'>
           {highlights.map(highlight => (
             <HighlightSmall

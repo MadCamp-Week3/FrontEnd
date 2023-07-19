@@ -18,6 +18,7 @@ import SpotifyProfile2 from './routes/SpotifyProfile2';
 import './App.css'
 import HighlightScreen from './routes/HighlightScreen';
 import Test from './routes/test';
+import IngyuPage from './routes/ingyuPage';
 
 export const UserContext = createContext(null);
 export const TokenContext = createContext();
@@ -88,6 +89,8 @@ const App = () => {
             <Route path="/spotifyPlayer" element={<SpotifyPlayer/>} />
             {/* <Route path="/spotifyProfile" element={<SpotifyProfile/>}/> */}
             <Route path="/spotifyProfile2" element={<SpotifyProfile2/>}/>
+
+            <Route path="search/page=ingyu" element={<IngyuPage />} />
           </Routes>
         </div>
       </div>

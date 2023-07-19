@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import '../css/MyPage.css';
-import MusicPage from './RoomsScreen';
 import MyPlaylists from '../components/MyPlaylists';
 import Component2 from '../components/Component2';
 import Component3 from '../components/Component3';
+import IngyuPlaylist from '../components/IngyuPlaylist';
 
 
-const MyPage = () => {
+const IngyuPage = () => {
   const [activeButton, setActiveButton] = useState('posts');
   const [profile, setProfile] = useState(null);
+
+  const userId = '31v7isepq2h46nhijpyddjys5xsu';
 
   useEffect(() => {
     const access_token = localStorage.getItem('access_token');
@@ -21,7 +23,7 @@ const MyPage = () => {
   }, []);
 
   const fetchProfile = async (access_token) => {
-    const result = await fetch("https://api.spotify.com/v1/me", {
+    const result = await fetch(`https://api.spotify.com/v1/users/${userId}`, {
       method: "GET", headers: { Authorization: `Bearer ${access_token}` }
     });
     console.log(result);
@@ -34,7 +36,7 @@ const MyPage = () => {
 
   const renderContent = () => {
     if (activeButton === 'posts') {
-      return <MyPlaylists />;
+      return <IngyuPlaylist />;
     } else if (activeButton === 'achievements') {
       return <Component2 />;
     } else if (activeButton === 'recommendedMusic') {
@@ -76,31 +78,10 @@ const MyPage = () => {
             </div>
           </div>
         )}
-        <div className="buttons">
-          {/* <button
-            onClick={() => handleButtonClick('posts')}
-            className={activeButton === 'posts' ? 'active' : ''}
-          >
-            내 플레이리스트
-          </button>
-          <button
-            onClick={() => handleButtonClick('achievements')}
-            className={activeButton === 'achievements' ? 'active' : ''}
-          >
-            업적
-          </button>
-          <button
-            onClick={() => handleButtonClick('recommendedMusic')}
-            className={activeButton === 'recommendedMusic' ? 'active' : ''}
-          >
-            좋아하는 아티스트
-          </button> */}
-
-        </div>
 
         <div className="content">{renderContent()}</div>
       </div>
    );
 };
 
-export default MyPage;
+export default IngyuPage;
