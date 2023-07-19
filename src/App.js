@@ -19,8 +19,9 @@ import './App.css'
 import HighlightScreen from './routes/HighlightScreen';
 import Test from './routes/test';
 
-
+export const UserContext = createContext(null);
 export const TokenContext = createContext();
+
 
 const App = () => {
   const CLIENT_ID = "8dfdcd03dc99405ea6a805c7cb932859";
@@ -29,8 +30,15 @@ const App = () => {
   const RESPONSE_TYPE = "token";
 
   const [token, setToken] = useState("");
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+
+
     const hash = window.location.hash;
     let token = window.localStorage.getItem("token");
     if (!token && hash) {
@@ -51,6 +59,7 @@ const App = () => {
   };
 
   return (
+    <UserContext.Provider value={{ user, setUser }}>
     <TokenContext.Provider value={{ token, setToken, logout, CLIENT_ID, REDIRECT_URI, RESPONSE_TYPE, AUTH_ENDPOINT }}>
       <div className='App'>
         {/* <script src="https://sdk.scdn.co/spotify-player.js"></script> */}
@@ -62,7 +71,7 @@ const App = () => {
             <Route path="/login" element={<LoginScreen/>} />
             <Route path="/signup" element={<SignupScreen/>} />
             
-            <Route path="/" element={<HomeScreen />} />
+            <Route path="/home" element={<HomeScreen />} />
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/rooms" element={<RoomsScreen />} /> 
             <Route path="/search" element={<SearchScreen />} />
@@ -82,6 +91,7 @@ const App = () => {
         </div>
       </div>
     </TokenContext.Provider>
+    </UserContext.Provider>
   );
 }
 

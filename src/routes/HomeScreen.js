@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../css/HomeScreen/HomeScreen.css';
 import HighlightSmall from '../components/HighlightSmall';
 import Post from '../components/Post';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { UserContext } from '../App';
 
 const HomeScreen = () => {
+  const user = useContext(UserContext);
+  console.log(user);
   const highlights = [
     { id: 1, username: 'user1', imageURL: 'profile1.jpg' },
     { id: 2, username: 'user2', imageURL: 'profile2.jpg' },
@@ -28,6 +31,7 @@ const HomeScreen = () => {
 
   return (
       <div className='main-content'>
+        <h1>Welcome, {user ? user.user : 'Guest'}!</h1>
         <h1>Home</h1>
         <div className='highlights-section'>
           {highlights.map(highlight => (
