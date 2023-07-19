@@ -82,7 +82,7 @@ const App = () => {
 
             <Route path="/test" element={<Test />} />
 
-            {/* <Route path="/llllogin" element={<SignInSide/>} /> */}
+            <Route path="/llllogin" element={<SignInSide/>} />
             <Route path="/spotifySearch" element={<SpotifySearch/>} />
             <Route path="/spotify" element={<SpotifyPlayerComponent/>} />
             <Route path="/spotifyPlayer" element={<SpotifyPlayer/>} />
