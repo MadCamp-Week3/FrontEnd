@@ -25,13 +25,13 @@ function HighlightScreen() {
   };
 
 
-  client.post(serverURL, requestData)
-        .then((response) => {
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.error(error);
-        })
+  // client.post(serverURL, requestData)
+  //       .then((response) => {
+  //         console.log(response.data);
+  //       })
+  //       .catch((error) => {
+  //         console.error(error);
+  //       })
 
   const { initIndex } = useParams();
 

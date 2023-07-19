@@ -6,6 +6,7 @@ const redirectUri = "http://localhost:3000/spotifyProfile2"; // Replace with you
 
 function SpotifyProfile2() {
     const [profile, setProfile] = useState(null); 
+    const [followedArtists, setFollowedArtists] = useState([]);
     const isMounted = useRef(null);  // add this line
 
     useEffect(() => {
@@ -23,6 +24,8 @@ function SpotifyProfile2() {
                 if(accessToken) {
                     console.log("accessToken:", accessToken);
                     const profile = await fetchProfile(accessToken);
+                    const artist = await fetchArtists(accessToken);
+                    console.log("artist:", artist);
                     console.log("profile:", profile); // Profile data logs to console
                     // setProfile(profile);  // Update the state with the fetched profile
                 if(isMounted.current) {  // check if component is still mounted
@@ -41,17 +44,6 @@ function SpotifyProfile2() {
         }
     }, []);
     
-    
-
-    // if (!code) {
-    //     redirectToAuthCodeFlow(clientId);
-    // } else {
-    //     const accessToken =  getAccessToken(clientId, code);
-    //     const profile =  fetchProfile(accessToken);
-    //     console.log("profile:", profile); // Profile data logs to console
-    //     populateUI(profile);
-    // }
-
     async function redirectToAuthCodeFlow(clientId) {
         const verifier = generateCodeVerifier(128);
         const challenge = await generateCodeChallenge(verifier);
@@ -62,7 +54,7 @@ function SpotifyProfile2() {
         params.append("client_id", clientId);
         params.append("response_type", "code");
         params.append("redirect_uri", redirectUri);
-        params.append("scope", "user-read-private user-read-email");
+        params.append("scope", "user-read-private user-read-email user-follow-read");
         params.append("code_challenge_method", "S256");
         params.append("code_challenge", challenge);
     
@@ -112,6 +104,8 @@ function SpotifyProfile2() {
     
         const { access_token } = await result.json();
         console.log(access_token);
+        window.localStorage.setItem("access_token", access_token);
+
         return access_token;
     }
     
@@ -122,6 +116,23 @@ function SpotifyProfile2() {
     
         return await result.json();
     }
+
+    async function fetchArtists(token) {
+        const result = await fetch("https://api.spotify.com/v1/me/following?type=artist", {
+            method: "GET", headers: { Authorization: `Bearer ${token}` }
+        });
+    
+        const data = await result.json();
+        console.log(data);
+    
+        if(isMounted.current) {  // check if component is still mounted
+            setFollowedArtists(data.artists.items);
+        }
+    
+        return data;
+    }
+    
+
 
     function populateUI(profile) {
         console.log("disp name: ", profile.display_name);

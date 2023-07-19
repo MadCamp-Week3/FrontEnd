@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import '../css/MyPage.css';
 import MusicPage from './RoomsScreen';
@@ -9,6 +9,24 @@ import Component3 from '../components/Component3';
 
 const MyPage = () => {
   const [activeButton, setActiveButton] = useState('posts');
+  const [profile, setProfile] = useState(null);
+
+  useEffect(() => {
+    const access_token = localStorage.getItem('access_token');
+
+    if (access_token) {
+      fetchProfile(access_token).then(profileData => setProfile(profileData));
+      console.log(profile);
+    }
+  }, []);
+
+  const fetchProfile = async (access_token) => {
+    const result = await fetch("https://api.spotify.com/v1/me", {
+      method: "GET", headers: { Authorization: `Bearer ${access_token}` }
+    });
+    console.log(result);
+    return await result.json();
+  }
 
   const handleButtonClick = (buttonName) => {
     setActiveButton(buttonName);
@@ -22,11 +40,7 @@ const MyPage = () => {
     } else if (activeButton === 'recommendedMusic') {
       return <Component3 />;
     }
-    };
-
-  const profilePicUrl = 'https://example.com/profile-pic.jpg';
-  const profileMusic = 'https://example.com/profile-music.mp3';
-  const followers = 100;
+  };
 
   const handleMoreClick = () => {
     // 더보기 버튼 클릭 시 동작할 로직을 작성하세요.
@@ -34,43 +48,48 @@ const MyPage = () => {
   };
 
   return (
-    // <Router>
-    <div className="container">
-    <div className="main-content">
-        <h1>마이 페이지</h1>
-        <img src={profilePicUrl} alt="프로필 사진" />
-        <audio src={profileMusic} controls />
-        <div>팔로우 수: {followers}</div>
-        <button onClick={handleMoreClick}>더보기</button>
-
+      <div className="main-content">
+        {/* <h1>마이 페이지</h1> */}
+        {profile && (
+        <div>
+          <h1>Spotify profile data</h1>
+          <section id="profile">
+            <h2>Welcome {profile.display_name}!</h2>
+            {profile.images && profile.images.length > 0 && <img src={profile.images[0].url} alt="Profile" />}
+            <ul>
+              <li>User ID: {profile.id}</li>
+              <li>Email: {profile.email}</li>
+              <li>Spotify URI: <a href={profile.uri}>{profile.uri}</a></li>
+              {/* <li>Link: <a href={profile.href}>{profile.href}</a></li> */}
+              {/* <li>Profile Image: {profile.images && profile.images.length > 0 ? profile.images[0].url : '(no profile image)'}</li> */}
+            </ul>
+          </section>
+        </div>
+      )}
         <div className="buttons">
-        <button
+          <button
             onClick={() => handleButtonClick('posts')}
             className={activeButton === 'posts' ? 'active' : ''}
-        >
+          >
             내 플레이리스트
-        </button>
-        <button
+          </button>
+          <button
             onClick={() => handleButtonClick('achievements')}
             className={activeButton === 'achievements' ? 'active' : ''}
-        >
+          >
             업적
-        </button>
-        <button
+          </button>
+          <button
             onClick={() => handleButtonClick('recommendedMusic')}
             className={activeButton === 'recommendedMusic' ? 'active' : ''}
-        >
+          >
             좋아하는 아티스트
-        </button>
+          </button>
         </div>
 
         <div className="content">{renderContent()}</div>
-    </div>
-    </div>
-
-    
-    // {/* </Router> */}
-  );
+      </div>
+   );
 };
 
 export default MyPage;

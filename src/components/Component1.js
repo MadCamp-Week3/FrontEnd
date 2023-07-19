@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const Component1 = () => {
     const [playlists, setPlaylists] = useState(null);
     const [playlistItems, setPlaylistItems] = useState(null);
-    const token = localStorage.getItem('token'); // You already have the token
+    const token = localStorage.getItem('access_token'); // You already have the token
 
 
         useEffect(() => {
