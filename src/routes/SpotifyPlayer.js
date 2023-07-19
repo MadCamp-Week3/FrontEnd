@@ -1,4 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import axios from 'axios';
+import React, { useEffect, useRef, useContext } from 'react';
+import { TokenContext } from '../App';  // Assume your App component is one level up in the directory
 
 // const SpotifyPlayer = () => {
 //   const playerRef = useRef(null);
@@ -24,6 +26,7 @@ import React, { useEffect, useRef } from 'react';
 //       playerRef.current.addListener('ready', ({ device_id }) => {
 //         console.log('Ready with Device ID', device_id);
 //       });
+
 
 //       // Not Ready
 //       playerRef.current.addListener('not_ready', ({ device_id }) => {

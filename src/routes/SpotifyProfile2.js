@@ -33,8 +33,7 @@ function SpotifyProfile2() {
                 }
                 }
                 
-                
-                
+               
                 
             })();
         }
@@ -113,6 +112,8 @@ function SpotifyProfile2() {
         const result = await fetch("https://api.spotify.com/v1/me", {
             method: "GET", headers: { Authorization: `Bearer ${token}` }
         });
+
+        console.log("result is", result);
     
         return await result.json();
     }

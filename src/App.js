@@ -78,7 +78,7 @@ const App = () => {
             <Route path="/search" element={<SearchScreen />} />
             <Route path="/start" element={<StartScreen/>} />
             
-            <Route path="/highlight/:param" element={<HighlightScreen />} />
+            <Route path="/highlight/:highlightId" element={<HighlightScreen />} />
 
             <Route path="/test" element={<Test />} />
 

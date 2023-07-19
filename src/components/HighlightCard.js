@@ -88,8 +88,9 @@ const HighlightCard = ( {songIds, userId, userPictureURL, content} ) => {
   return (
     <div className="highlightCard">
       <div className='highlightContainer'>
+      {songs && songs.length > 0 && (<>
         <HighlightInfo profileURL={profileURL} profileName={profileName} caption={content}/>
-        {songs && songs.length > 0 && (<>
+        
           <HighlightItem id={songs[0].id} albumCover={songs[0].albumCover} title={songs[0].title} artist={songs[0].artist} />
           <HighlightItem id={songs[1].id} albumCover={songs[1].albumCover} title={songs[1].title} artist={songs[1].artist} />
          <HighlightItem id={songs[2].id} albumCover={songs[2].albumCover} title={songs[2].title} artist={songs[2].artist} />

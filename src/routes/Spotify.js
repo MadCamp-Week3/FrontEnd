@@ -1,7 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import SpotifyPlayer from 'react-spotify-web-playback';
+import { TokenContext } from '../App';  // Assume your App component is one level up in the directory
+
 
 const SpotifyPlayerComponent = () => {
+  const { token, logout, CLIENT_ID, REDIRECT_URI, RESPONSE_TYPE, AUTH_ENDPOINT } = useContext(TokenContext);
+
   useEffect(() => {
     const token = 'BQCKUhNX70JAJlT_vLyI7K-zqfrqzQqIuzylE6VxBkORNpKZ7r75MW9cddJOiuoJlWPNjXI2TTIqgwROeCt_v5BQyhubBKUp7XCL1qczTc-ANPvFj7f_QSIyZHF0Q_TxwIj9HCI6V4m7Rq-WrX_EwHwsgpsl6Uz52G5vKhy2zy_uSMuj0vgF1585o3x8xKKJcHTUL2gonw8DivLRY2Dm-2ZFM27MDTec';
 

@@ -85,6 +85,7 @@ const MyPage = () => {
           >
             좋아하는 아티스트
           </button>
+
         </div>
 
         <div className="content">{renderContent()}</div>
