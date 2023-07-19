@@ -14,7 +14,7 @@
 
 ### 개발 환경 Development Environment
 * Library: ReactJS
-* OS: Windows, macOS, Linux
+* OS: Linux
 * Language: JavaScript, CSS, Python
 * IDE: VS Code
 * [Server: Django](https://github.com/MadCamp-Week3/BackEnd)
