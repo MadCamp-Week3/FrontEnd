@@ -4,7 +4,7 @@ import addIcon from '../images/add-icon.svg';
 import { FetchTracksByIds, SearchSongs, addSongToPlaylist } from '../functions/spotify.js';
 import { TokenContext } from '../App';  // Assume your App component is one level up in the directory
 
-const HighlightCard = ( {songIds, userId, userPictureURL, content} ) => {
+const HighlightCard = ( {songIds, userName, userPictureURL, content} ) => {
   const [songs, setSongs] = useState([]);
   const { token, logout, CLIENT_ID, REDIRECT_URI, RESPONSE_TYPE, AUTH_ENDPOINT } = useContext(TokenContext);
 
@@ -80,7 +80,7 @@ const HighlightCard = ( {songIds, userId, userPictureURL, content} ) => {
   }
 
   //TODO db 연결
-  const profileName = "John Doe"; //with userId
+  const profileName = userName; //with userId
 
   const profileURL= userPictureURL;
   // const profileName = "John Doe"; //with userId 
@@ -89,7 +89,7 @@ const HighlightCard = ( {songIds, userId, userPictureURL, content} ) => {
     <div className="highlightCard">
       <div className='highlightContainer'>
       {songs && songs.length > 0 && (<>
-        <HighlightInfo profileURL={profileURL} profileName={profileName} caption={content}/>
+        <HighlightInfo profileURL={profileURL} profileName={userName} caption={content}/>
         
           <HighlightItem id={songs[0].id} albumCover={songs[0].albumCover} title={songs[0].title} artist={songs[0].artist} />
           <HighlightItem id={songs[1].id} albumCover={songs[1].albumCover} title={songs[1].title} artist={songs[1].artist} />

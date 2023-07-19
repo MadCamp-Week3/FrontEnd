@@ -19,31 +19,31 @@ function HighlightScreen() {
   const initHighlightData = [
     {
       songIds: ['5sdQOyqq2IDhvmx2lHOpwd', '6rqhFgbbKwnb9MLmUQDhG6', '5sdQOyqq2IDhvmx2lHOpwd'],
-      userId: 1,
+      userName: 'John Doe',
       userPictureURL: "https://picsum.photos/60/60",
       content: 'lorem ipsum blah'
     },
     {
       songIds: ['2gQPv5jvVPqU2a9HhMNO1v', '0KKkJNfGyhkQ5aFogxQAPU', '28a0aMV1OKoyNiCJuNsWrY'],
-      userId: 2,
+      userName: "Emily Thompson",
       userPictureURL: "https://picsum.photos/60/60",
       content: 'dolor sit amet'
     },
     {
       songIds: ['6nICBdDevG4NZysIqDFPEa', '5IAESfJjmOYu7cHyX557kz', '6I9VzXrHxO9rA9A5euc8Ak'],
-      userId: 3,
+      userName: "Jack Jones",
       userPictureURL: "https://picsum.photos/60/60",
       content: 'consectetur adipiscing elit'
     },
     {
       songIds: ['5VuH5mBWdaZi5oNzrFhigj', '24jrwTJSlYOCguuLa4j28A', '3dYD57lRAUcMHufyqn9GcI'],
-      userId: 4,
+      userName: "Leone Armand",
       userPictureURL: "https://picsum.photos/60/60",
       content: 'sed do eiusmod tempor'
     },
     {
       songIds: ['2Hh3ETdQKrmSI3QS0hme7g', '6CTWathupIiDs7U4InHnDA', '5wG3HvLhF6Y5KTGlK0IW3J'],
-      userId: 5,
+      userName: "Billy Stuart",
       userPictureURL: "https://picsum.photos/60/60",
       content: 'incididunt ut labore et dolore magna aliqua'
     },
@@ -52,17 +52,6 @@ function HighlightScreen() {
   const [currentId, setCurrentId] = useState(initId);
   const [highlightData, setHighlightData] = useState(initHighlightData);
 
-  // useEffect(() => {
-  //   const fetchHighlightData = async () => {
-  //     try {
-  //       const response = await client.get('/api/highlights'); // Replace '/api/highlights' with your actual API endpoint
-  //       setHighlightData(response.data); //create model for highlightdata
-  //     } catch (error) {
-  //       console.error('Error fetching highlight data:', error);
-  //     }
-  //   }
-  //   fetchHighlightData();
-  // }, []);
 
 
   const moveToNext = () => {
@@ -88,7 +77,7 @@ function HighlightScreen() {
 
   const currentHighlightCard = <HighlightCard 
     songIds={currentHighlightData.songIds} 
-    userId={currentHighlightData.userId}
+    userName={currentHighlightData.userName}
     userPictureURL={currentHighlightData.userPictureURL} 
     content={currentHighlightData.content} />
 
