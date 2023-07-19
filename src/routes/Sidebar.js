@@ -35,7 +35,7 @@ function Sidebar() {
             </div>
           </div>
         </Link>
-        {/* <Link to="/search">
+        <Link to="/search">
           <div className="menu-item-layout">
             <img className="frame" alt="Frame" src={require('../images/search-icon.svg').default}  />
             <div className="search-text-wrapper">
@@ -43,7 +43,7 @@ function Sidebar() {
             </div>
           </div>
         </Link>
-        <Link to="/rooms">
+        {/* <Link to="/rooms">
           <div className="menu-item-layout">
             <img className="frame" alt="Frame" src={require('../images/rooms-icon.svg').default}  />
             <div className="auto-layout">
