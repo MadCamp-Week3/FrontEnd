@@ -41,11 +41,18 @@ const HighlightCard = ( {songIds, userId, userPictureURL, content} ) => {
 
   function HighlightItem({ id, albumCover, title, artist }) {
 
-    const onClickAdd = (event) => {
+    const onClickAdd = async (event) => {
       event.stopPropagation();
-      console.log(`pressed ${title} `)
+      console.log(`pressed id ${id} `)
+      console.log(`pressed title ${title} `)
 
       //addSongToPlaylist(id, 1); //TODO add the songid to the users playlist
+
+      try {
+        await addSongToPlaylist(id, '0XXiFNGg1FNXPDhQD07ZSt'); // Replace 'your_playlist_id' with the actual playlist ID
+      } catch (error) {
+        console.error(`Failed to add song to playlist: ${error.message}`);
+      }
     };
 
     return (

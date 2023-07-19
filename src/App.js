@@ -56,6 +56,7 @@ const App = () => {
   const logout = () => {
     setToken("");
     window.localStorage.removeItem("token");
+    
   };
 
   return (

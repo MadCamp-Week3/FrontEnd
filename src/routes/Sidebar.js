@@ -28,7 +28,7 @@ function Sidebar() {
             </div>
           </div>
         </Link>
-        <Link to="/search">
+        {/* <Link to="/search">
           <div className="menu-item-layout">
             <img className="frame" alt="Frame" src={require('../images/search-icon.svg').default}  />
             <div className="search-text-wrapper">
@@ -43,7 +43,7 @@ function Sidebar() {
               <div className="text-wrapper">Rooms</div>
             </div>
           </div>
-        </Link>
+        </Link> */}
         <Link to="/login">
           <div className="menu-item-layout">
             {/* <img className="frame" alt="Frame" src={require('../images/login-icon.svg').default}  /> */}
