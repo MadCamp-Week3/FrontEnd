@@ -50,7 +50,7 @@ const FetchTracksByIds = async (token, Ids) => {
       `https://api.spotify.com/v1/tracks`,
       {
         headers: {
-          'Authorization': `Bearer ${token}`,
+          'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
         },
         params: {
           ids: Ids.join(','),
