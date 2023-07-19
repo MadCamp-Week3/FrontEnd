@@ -9,16 +9,16 @@ const HomeScreen = () => {
   const user = useContext(UserContext);
   console.log(user);
   const highlights = [
-    { id: 1, username: 'user1', imageURL: 'profile1.jpg' },
+    { id: 1, username: 'John Doe', imageURL: 'profile1.jpg' },
     { id: 2, username: 'user2', imageURL: 'profile2.jpg' },
     { id: 3, username: 'user3', imageURL: 'profile3.jpg' },
   ];
 
   // 고정데이터로
   const posts = [
-    { id: 1, username: 'user1', imageURL: "https://picsum.photos/60/60", caption: 'Caption 1' },
-    { id: 2, username: 'user2', imageURL: "https://picsum.photos/60/60", caption: 'Caption 2' },
-    { id: 3, username: 'user3', imageURL: "https://picsum.photos/60/60", caption: 'Caption 3' },
+    { id: 1, username: 'user1', imageURL: "require('../images/login-icon.svg').default", caption: '앨범 샀다!!1' },
+    { id: 2, username: 'user2', imageURL: "https://picsum.photos/60/60", caption: '아이유 예쁘다..' },
+    { id: 3, username: 'user3', imageURL: "https://picsum.photos/60/60", caption: 'LP' },
     // Add more posts
   ];
 

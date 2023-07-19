@@ -1,0 +1,48 @@
+.my-playlist {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
+.playlist-grid {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.playlist {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.button {
+  align-self: center;
+}
+
+.playlist-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.playlist-img {
+  width : 250px;
+  height : 250px;
+  box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.6);
+}
+
+.open-in-spotify {
+  background-color: #1ED760;
+  height: fit-content;
+  box-sizing: border-box;
+  border-radius: 25px;
+  padding: 10px;
+  width: fit-content;
+  font-weight: bold;
+  color: white;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);
+}

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import '../css/MyPage.css';
 import MusicPage from './RoomsScreen';
-import Component1 from '../components/Component1';
+import MyPlaylists from '../components/MyPlaylists';
 import Component2 from '../components/Component2';
 import Component3 from '../components/Component3';
 
@@ -34,7 +34,7 @@ const MyPage = () => {
 
   const renderContent = () => {
     if (activeButton === 'posts') {
-      return <Component1 />;
+      return <MyPlaylists />;
     } else if (activeButton === 'achievements') {
       return <Component2 />;
     } else if (activeButton === 'recommendedMusic') {
@@ -48,26 +48,36 @@ const MyPage = () => {
   };
 
   return (
-      <div className="main-content">
-        {/* <h1>마이 페이지</h1> */}
+      <div className="my-page">
         {profile && (
-        <div>
-          <h1>Spotify profile data</h1>
-          <section id="profile">
-            <h2>Welcome {profile.display_name}!</h2>
-            {profile.images && profile.images.length > 0 && <img src={profile.images[0].url} alt="Profile" />}
-            <ul>
-              <li>User ID: {profile.id}</li>
-              <li>Email: {profile.email}</li>
-              <li>Spotify URI: <a href={profile.uri}>{profile.uri}</a></li>
-              {/* <li>Link: <a href={profile.href}>{profile.href}</a></li> */}
-              {/* <li>Profile Image: {profile.images && profile.images.length > 0 ? profile.images[0].url : '(no profile image)'}</li> */}
-            </ul>
-          </section>
-        </div>
-      )}
+          <div className='profile-info'>
+            <h1>Welcome {profile.display_name} !</h1>
+            <div className="profile">
+              <div className='profile-image'>
+                {profile.images && profile.images.length > 0 && <img src={profile.images[0].url} alt="Profile" />}
+              </div>
+              <div className='profile-details'>
+                <div className='profile-details-item'>
+                  <div className='key'>User ID</div>
+                  <div className='value'>{profile.id}</div>
+                </div>
+                <div className='profile-details-item'>
+                  <div className='key'>Email</div>
+                  <div className='value'>{profile.email}</div>
+                </div>
+
+                <a href={profile.uri}>
+                  <div className='open-in-spotify'>
+                    Open profile in Spotify
+                  </div>
+                </a>
+              
+              </div>
+            </div>
+          </div>
+        )}
         <div className="buttons">
-          <button
+          {/* <button
             onClick={() => handleButtonClick('posts')}
             className={activeButton === 'posts' ? 'active' : ''}
           >
@@ -84,7 +94,7 @@ const MyPage = () => {
             className={activeButton === 'recommendedMusic' ? 'active' : ''}
           >
             좋아하는 아티스트
-          </button>
+          </button> */}
 
         </div>
 
