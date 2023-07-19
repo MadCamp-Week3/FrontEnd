@@ -2,15 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../css/Sidebar.css';
 import '../css/LinkStyles.css';
-
+import LifeMusicIcon from '../images/LifeMusicIcon.png';
+import Avatar from '@mui/material/Avatar';
 
 function Sidebar() {
   
   return (
-    <div className="sidebar">
-      <div className="logo-frame-wrapper">
-        <img className="logo" alt="Logo auto layout" src={require('../images/logo-icon.svg').default} />
-      </div>
+    <div className="sidebar" style={{ display: 'flex', alignItems: 'flex-start' }}>
+  <div style={{ display: 'flex', alignItems: 'center' }}>
+    <Avatar sx={{ m: 1, bgcolor: 'white' }}>
+      <img src={LifeMusicIcon} alt="Life Music Icon" style={{ width: '60%', height: 'auto' }} />
+    </Avatar>
+    <div className="logo-frame-wrapper" style={{ marginLeft: '8px', fontSize: '20px' }}>
+      <span>Life Music</span>
+    </div>
+  </div>
+
       <div className="sidebar-menu">
         <Link to="/mypage">
           <div className="menu-item-layout">

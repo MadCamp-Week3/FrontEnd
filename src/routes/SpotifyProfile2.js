@@ -20,6 +20,7 @@ function SpotifyProfile2() {
         } else {
             (async () => {
                 const accessToken = await getAccessToken(clientId, code);
+                console.log(accessToken);
                 
                 if(accessToken) {
                     console.log("accessToken:", accessToken);
@@ -53,7 +54,7 @@ function SpotifyProfile2() {
         params.append("client_id", clientId);
         params.append("response_type", "code");
         params.append("redirect_uri", redirectUri);
-        params.append("scope", "user-read-private user-read-email user-follow-read playlist-modify-public playlist-modify-private");
+        params.append("scope", "user-read-private user-read-email user-follow-read playlist-modify-public playlist-modify-private playlist-read-private playlist-read-collaborative");
         params.append("code_challenge_method", "S256");
         params.append("code_challenge", challenge);
     
