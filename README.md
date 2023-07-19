@@ -25,7 +25,7 @@
 ### 1. 로그인 Login
 
 <img width="1392" alt="1" src="https://github.com/MadCamp-Week3/FrontEnd/assets/121816472/198c9d46-7923-4b32-b641-a45dc469a5a4">
-
+<img width="1392" alt="2" src="https://github.com/MadCamp-Week3/FrontEnd/assets/121816472/d239ee3a-799a-438d-9b05-ff8e5e36757a">
 
 #### 주요 기능
 * 자체 로그인과 Spotify 연동 로그인 기능을 제공합니다.
@@ -38,8 +38,7 @@
 ***
 
 ### 2. 마이페이지 MyPage
-!!!!사진!!!!
-
+<img width="1392" alt="3" src="https://github.com/MadCamp-Week3/FrontEnd/assets/121816472/d098b177-094a-4195-a691-d2b3715b42c1">
 #### 주요 기능
 * Spotify 프로필과 연동해서 사진, 이메일, 계정 URI를 가져올 수 있습니다.
 * Spotify 플레이리스트와 연동해서 내 플레이리스트를 가져오고 플레이리스트 안에 있는 아이템을 확인할 수 있습니다.
@@ -48,9 +47,8 @@
 * 좋아하는 아티스트를 표시할 수 있는 기능
 
 ### 3. 음원 하이라이트 공유
-
-!!!!사진!!!!
-
+<img width="1392" alt="4" src="https://github.com/MadCamp-Week3/FrontEnd/assets/121816472/677ef724-8fc5-4315-bb3a-4b3f0ba20cf4">
+<img width="1392" alt="5" src="https://github.com/MadCamp-Week3/FrontEnd/assets/121816472/895ee6b4-e0b3-4d7e-b65f-11218ac7519a">
 #### 주요기능
 * 다른 이용자가 남긴 음원 하이라이트를 통해 추천 음악을 감상할 수 있습니다.
 * 5초~15초 동안 재생되는 음원의 하이라이트 부분을 들을 수 있습니다.
@@ -60,3 +58,8 @@
 * 게시글 기능
 * 하이라이트 공유 기능
 * 댓글 및 답장 기능
+### 4. 다른 유저 검색 기능
+* 검색을 통해 다른 유저의 spotify 계정과 플레이리스트를 볼 수 있습니다.
+* 플레이스트에 속해 있는 음악들도 함께 볼 수 있습니다.
+<img width="1392" alt="6" src="https://github.com/MadCamp-Week3/FrontEnd/assets/121816472/236a05bc-44fc-4730-9bbf-9510a4605dba">
+<img width="1392" alt="7" src="https://github.com/MadCamp-Week3/FrontEnd/assets/121816472/72ed9d27-ea58-4e49-aa0a-bcc090780bfd">
