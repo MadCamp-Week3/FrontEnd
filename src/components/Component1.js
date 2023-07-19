@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const Component1 = () => {
     const [playlists, setPlaylists] = useState(null);
     const [playlistItems, setPlaylistItems] = useState(null);
-    const token = localStorage.getItem('token'); // You already have the token
+    const token = localStorage.getItem('access_token'); // You already have the token
 
 
         useEffect(() => {
@@ -37,13 +37,15 @@ const Component1 = () => {
 
   return (
     <div>
-      <h1>Your Spotify Playlists</h1>
+      {/* <h1>Your Spotify Playlists</h1> */}
             {playlists && playlists.items.map((playlist, index) => (
                 <div key={index} onClick={() => handlePlaylistClick(playlist.id)}>
-                    <h1>{playlist.uri}</h1>
+                    {/* <h1>{ playlist.id }</h1> */}
+                    {/* <h1>{playlist.uri}</h1> */}
                     <h2>{playlist.name}</h2>
                     <p>{playlist.description}</p>
                     <img src={playlist.images[0]?.url} alt={playlist.name} width="200" height="200"/>
+                    <br/>
                     <a href={playlist.external_urls.spotify}>Open in Spotify</a>
                 </div>
             ))}

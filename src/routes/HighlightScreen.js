@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useNavigate } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+
 import { useParams } from 'react-router-dom';
 import Stories from 'react-insta-stories'
 import '../css/HomeScreen/HighlightScreen.css'
 import HighlightCard from '../components/HighlightCard';
 import client from '../client';
-
-
+import { UserContext } from '../App';
 
 function HighlightScreen() {
   const { highlightId } = useParams();
