@@ -1,25 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import IngyuPlaylist from '../components/IngyuPlaylist';
 
 const SearchScreen = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
-
-  // 미리 정의된 데이터
-  const data = [
-    'Apple',
-    'Banana',
-    'Cherry',
-    'Date',
-    'Elderberry',
-    'Fig',
-    'Grape',
-  ];
+  const [showFetchButton, setShowFetchButton] = useState(false);
+  const [showPlaylists, setShowPlaylists] = useState(false);
 
   const handleSearch = () => {
-    const results = data.filter(item => 
-      item.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setSearchResults(results);
+    setShowFetchButton(true);
+  };  
+
+  const handleFetch = () => {
+    setShowPlaylists(true);
   };
 
   return (
@@ -31,12 +24,8 @@ const SearchScreen = () => {
         placeholder="Search..." 
       />
       <button onClick={handleSearch}>Search</button>
-      <div>
-        <h2>Results:</h2>
-        {searchResults.map((result, index) => (
-          <p key={index}>{result}</p>
-        ))}
-      </div>
+      {showFetchButton && <button onClick={handleFetch}>Ingyu</button>}
+      {showPlaylists && <IngyuPlaylist />}
     </div>
   );
 };

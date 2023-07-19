@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 
 const clientId = "8dfdcd03dc99405ea6a805c7cb932859"; // Replace with your client id
-const redirectUri = "http://localhost:3000/spotifyProfile2"; // Replace with your redirect URI
+const redirectUri = "http://localhost:3000/mypage"; // Replace with your redirect URI
 
 
 function SpotifyProfile2() {
